@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Art Museum | Collections</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/features.js"></script>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="" id="logo" tabindex="0">THE<br>ART<br>MUSEUM</a>
+            <h1 id="pagetitle">Collections</h1>
+            <button id="navBurgerButton" tabindex="0" onclick="toggleMenuShelf(event);" data-state="closed">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Menu">
+                    <path id="Shape" fill-rule="evenodd" clip-rule="evenodd" d="M3 8V6H21V8H3ZM3 13H21V11H3V13ZM3 18H21V16H3V18Z" fill="black"/>
+                </g>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="menushelf">
+        <div id="globalsearch">
+            <span class="icon">
+                <svg width="21" height="21" viewBox="0 0 21 21" stroke="white" stroke-linecap="square" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.36396 14.1569C9.48815 17.2811 14.5535 17.2811 17.6777 14.1569C20.8019 11.0327 20.8019 5.96735 17.6777 2.84315C14.5535 -0.281049 9.48815 -0.281049 6.36396 2.84315C3.23976 5.96735 3.23976 11.0327 6.36396 14.1569ZM6.36396 14.1569L0.707099 19.8137"/>
+                </svg>
+            </span>
+            <div class="inputframe">
+                <input type="text" name="in_globalSearch" id="in_globalSearch" placeholder="Search">
+                <button id="btn_globalSearch">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                        <path stroke-linecap="square" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <ul>
+            <li> <!-- exhibitions -->
+                <a href="">
+                    <span class="icon">
+                        <svg width="25" height="27" viewBox="0 0 25 27" fill="none" stroke="white" stroke-linecap="square" stroke-weight="1.5" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.5 7.5V2.5H19M24.5 7.5H19M24.5 7.5V12M0.5 7.5V2.5H6.5M0.5 7.5H6.5M0.5 7.5V12M13 7.5H19M13 7.5H6.5M13 7.5V12M13 26.5H19M13 26.5H6.5M13 26.5V21.5M19 7.5V12M19 26.5H22.5C23.6046 26.5 24.5 25.6046 24.5 24.5V21.5M19 26.5V21.5M6.5 7.5V12M6.5 26.5H2.5C1.39543 26.5 0.5 25.6046 0.5 24.5V21.5M6.5 26.5V21.5M24.5 17V12M24.5 17V21.5M24.5 17H19M0.5 17V12M0.5 17V21.5M0.5 17H6.5M0.5 12H6.5M24.5 12H19M24.5 21.5H19M0.5 21.5H6.5M19 4.5V2.5M19 2.5V0.5M19 2.5H6.5M6.5 2.5V0.5M6.5 2.5V4.5M19 12V17M19 12H13M19 17V21.5M19 17H13M19 21.5H13M13 21.5V17M13 21.5H6.5M13 17V12M13 17H6.5M13 12H6.5M6.5 12V17M6.5 17V21.5"/>
+                        </svg>
+                    </span>
+                    <div>Exhibitions & Events</div>
+                </a>
+            </li>
+            <li> <!-- artists -->
+                <a href="">
+                    <span class="icon">
+                        <svg width="25" height="23" viewBox="0 0 25 23" fill="none" stroke="white" stroke-linecap="square" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.5 18.0296C19.8807 18.0296 21 16.9103 21 15.5296C21 14.1489 19.8807 13.0296 18.5 13.0296C17.1193 13.0296 16 14.1489 16 15.5296C16 16.9103 17.1193 18.0296 18.5 18.0296ZM18.5 18.0296C16.2909 18.0296 14.5 19.8204 14.5 22.0296H22.5C22.5 19.8204 20.7091 18.0296 18.5 18.0296ZM9.5 5.52956C9.5 8.01485 7.48528 10.0296 5 10.0296C2.51472 10.0296 0.5 8.01485 0.5 5.52956C0.5 3.04428 2.51472 1.02956 5 1.02956C7.48528 1.02956 9.5 3.04428 9.5 5.52956ZM0.5 13.0296H9.5V22.0296H0.5V13.0296ZM18.5 1.02956L23.5 10.0296H13.5L18.5 1.02956Z"/>
+                        </svg>
+                    </span>
+                    <div>Artists & Artworks</div>
+                </a>
+            </li>
+            <li> <!-- collections -->
+                <a href="collections.html">
+                    <span class="icon">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="white" stroke-linecap="square" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="matrix(1,0,0,1,5,3)">
+                                <path d="M15.5,3.795L15.5,14.295L8,17.545L0.5,14.295L0.5,3.795L8,0.545L15.5,3.795ZM0.5,3.795L8,7.545M8,7.545L8,17.545M8,7.545L15.5,3.795"/>
+                            </g>
+                        </svg>
+                    </span>
+                    <div>Collections</div>
+                </a>
+            </li>
+            <li> <!-- Plan your visit -->
+                <a href="tickets.html">
+                    <span class="icon">
+                        <svg width="25" height="15" viewBox="0 0 25 15" fill="none" stroke="white" stroke-linecap="square" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.5 14.5H24.5V11.3705C22.7816 10.9218 21.5135 9.35899 21.5135 7.5C21.5135 5.64101 22.7816 4.07821 24.5 3.62951V0.5H12.5M12.5 14.5H0.5V11.6176V11.5C2.70914 11.5 4.5 9.70914 4.5 7.5C4.5 5.29086 2.70914 3.5 0.5 3.5V0.5H12.5M12.5 14.5V12.5M12.5 0.5V2.5M12.5 4.5V6.5M12.5 8.5V10.5"/>
+</svg>
+                    </span>
+                    <div>Plan your visit</div>
+                </a>
+            </li>
+            <li> <!-- membership -->
+                <a href="">
+                    <span class="icon">
+                        <svg width="31" height="19" viewBox="0 0 31 19" fill="none" stroke="white" stroke-linecap="square" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.5 6H15.5M26.5 9H15.5M26.5 12H15.5M8 9.5C9.38071 9.5 10.5 8.38071 10.5 7C10.5 5.61929 9.38071 4.5 8 4.5C6.61929 4.5 5.5 5.61929 5.5 7C5.5 8.38071 6.61929 9.5 8 9.5ZM8 9.5C5.79086 9.5 4 11.2909 4 13.5H12C12 11.2909 10.2091 9.5 8 9.5ZM0.5 0.5H30.5V18.5H0.5V0.5Z"/>
+</svg>
+                    </span>
+                    <div>Become a member</div>
+                </a>
+            </li>
+            <li> <!-- shop -->
+                <a href="">
+                    <span class="icon">
+                        <svg width="24" height="30" viewBox="0 0 24 30" fill="none" stroke="white" stroke-linecap="square" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 7.27088C11.6846 7.27088 12.684 7.27088 12 7.27088V7.27088Z" fill="#ccc"/>
+                        <path d="M12 7.27088C11.316 7.27088 12.3154 7.27088 12 7.27088V7.27088Z" fill="#ccc"/>
+                        <path d="M0.5 18.2709V29.2709H12M0.5 18.2709V7.27088H12M0.5 18.2709H12M23.5 18.2709V7.27088H12M23.5 18.2709V29.2709H12M23.5 18.2709H12M12 7.27088C13 2.77088 16.2449 -1.22912 18.6858 1.27088C21.158 3.80303 14.8753 7.11498 12 7.27088ZM12 7.27088C11.6846 7.27088 12.684 7.27088 12 7.27088ZM12 7.27088V18.2709M12 7.27088C11 2.77088 7.75505 -1.22912 5.31421 1.27088C2.84198 3.80303 9.12471 7.11498 12 7.27088ZM12 7.27088C12.3154 7.27088 11.316 7.27088 12 7.27088ZM12 29.2709V18.2709"/>
+                        </svg>
+                    </span>
+                    <div>Shop</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <main>
+
+        <div id="localsearch">
+            <div>
+                <input type="text" id="in_localSearch" name="in_localSearch" placeholder="Explore the Collection">
+                <button>
+                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" line-width="2" stroke-linecap="square" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.36396 14.1569C9.48815 17.2811 14.5535 17.2811 17.6777 14.1569C20.8019 11.0327 20.8019 5.96735 17.6777 2.84315C14.5535 -0.281049 9.48815 -0.281049 6.36396 2.84315C3.23976 5.96735 3.23976 11.0327 6.36396 14.1569ZM6.36396 14.1569L0.707099 19.8137"/>
+                    </svg>
+                </button>
+            </div>
+            <a id="advSearchBtn" role="button">Advanced search</a>
+        </div>
+
+        <div id="collectionsList">
+        </div>
+<script>
+// DRY
+let listItems = [
+    {
+        "title" : "Decorative<br>arts&nbsp;&&nbsp;crafts",
+        "href"  : "#",
+        "img"   :"/images/Mask Group.jpg"
+    },
+    {
+        "title" : "American<br>Impressionism",
+        "href"  : "#",
+        "img"   : "/images/Mask Group-1.jpg"
+    },
+    {
+        "title" : "De stijl",
+        "href"  : "#",
+        "img"   : "/images/Mask Group-2.jpg"
+    },
+    {
+        "title" : "Cubism",
+        "href"  : "#",
+        "img"   : "/images/Mask Group-3.jpg"
+    },
+    {
+        "title" : "American<br>photography",
+        "href"  : "#",
+        "img"   : "/images/Mask Group-4.jpg"
+    },
+    {
+        "title" : "Greek antiques",
+        "href"  : "#",
+        "img"   : "/images/Mask Group-5.jpg"
+    },
+]
+function generateList(data) {
+    let item = document.createElement('a');
+    item.setAttribute('href',data.href);
+    item.classList.add('list_item');
+
+    let img = document.createElement('img');
+    img.src = data.img;
+        
+    let title = document.createElement('h3');
+    title.innerHTML = data.title;
+
+    item.append(img);
+    item.append(title);
+    return item;
+}
+listItems.forEach(d => {
+    collectionsList.append(generateList(d));
+});
+</script>
+
+        
+    </main>
+</body>
+</html>

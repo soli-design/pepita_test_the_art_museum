@@ -1,0 +1,22 @@
+// COLORS
+$primary-color:     hsla(4, 100%, 61%, 1);
+$secondary-color:   hsla(0, 0%, 0%, 1);
+$secondary-medium:  hsla(0, 0%, 59%, 1);
+$secondary-light:   hsla(0, 0%, 67%, 1);
+$white:             hsla(0, 0%, 100%, 1);
+
+// FONTS
+$font-stack:    montserrat, sans-serif;
+$font-light:    300;
+$font-regular:  400;
+$font-bold:     600; // a design-ban 400-at ír a figma pár helyen, de ránézésre inkább 600-as. Lehet, hogy font verzió különbség van?
+
+// SCREENS
+$xxl:   1921px;
+$xl:    1300px;
+$lg:    1024px;
+$md:     769px;
+$sm:     481px;
+
+// DEFAULTS
+$anim_speed: 300ms;

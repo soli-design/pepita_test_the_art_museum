@@ -1,0 +1,280 @@
+@use 'variables';
+@use 'mixins';
+
+:root {
+    font-size: 10px;
+}
+html {scrollbar-gutter: stable;}
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    outline-offset: 0px;
+    outline-color: transparent;
+    border: 0;
+    // border: 1px solid green;
+}
+*:focus-visible {
+    outline: .1rem solid variables.$primary-color;
+    outline-offset: .2rem;
+}
+button {
+    background-color: transparent;
+    border: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+    background-color: variables.$white;
+    color: variables.$secondary-light;
+    
+    font-family: variables.$font-stack;
+
+    // overflow-x: hidden;
+}
+
+// Mobile
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 6rem;
+    z-index: 99;
+
+    padding-inline: 1.2rem;
+
+    display: flex;
+    justify-items: center;
+    align-items: center;
+
+    div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #logo {
+        font-weight: variables.$font-bold;
+        font-size: 1rem;
+
+        line-break: normal;
+
+        color: variables.$secondary-color;
+
+        text-decoration: none;
+        width: 12.5%;
+    }
+    #pagetitle {
+        font-size: 1.8rem;
+        font-weight: variables.$font-bold;
+
+        line-height: 100%;
+        letter-spacing: 0%;
+        
+        text-align: center;
+
+        color: variables.$primary-color;
+    }
+    button {
+        width: 12.5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        svg {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
+}
+#menushelf {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 20%;
+    bottom: 0;
+
+    padding: 1.2rem;
+
+    z-index: 100;
+    transform: translateX(-105%);
+    will-change: transform;
+    transition: transform variables.$anim_speed;
+    overflow-x: hidden;
+
+    background-color: variables.$primary-color;
+    color: variables.$white;
+
+    font-weight: variables.$font-bold;
+
+    box-shadow: .4rem 0 .4rem 0 hsla(0, 0%, 0%, 0.25);
+
+    .icon {
+        width: 2.4rem;
+        svg {
+            width: 100%;
+            height: auto;
+        }
+    }
+    #globalsearch {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 1.2rem;
+        .inputframe {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-grow: 1;
+
+            padding: 0.75rem;
+
+            border: 2px solid variables.$white;
+
+            input {
+                background-color: variables.$primary-color;
+                flex-grow: 1;
+
+                font-size: 1.8rem;
+    
+                color: variables.$white;
+            }::placeholder{
+                color: variables.$white;
+            }
+            button {
+                opacity: 0;
+                width: 2.4rem;
+                height: 2.4rem;
+            }
+        }
+        .inputframe:hover button,
+        .inputframe:focus-within button {
+            opacity: 1;
+        }
+    }
+    ul > li > a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 1rem;
+        padding-block: 1.2rem;
+
+        color: variables.$white;
+        font-size: 1.8rem;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: gap variables.$anim_speed;
+    }
+    ul > li > a:hover {
+        gap: 2rem;
+    }
+}
+main {
+    contain: layout paint;
+    will-change: transform;
+    transition: transform variables.$anim_speed;
+
+    margin-top: 6rem;
+    padding-inline: 1.2rem;
+    padding-block: 0.9rem;
+}
+#localsearch {
+    #advSearchBtn {
+        display: block;
+        padding-block: 0.6rem;
+
+        color: variables.$primary-color;
+
+        font-weight: variables.$font-bold;
+        font-size: 1.2rem;
+    }
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-grow: 1;
+        gap: 1rem;
+        
+        padding: 1rem;
+        
+        border: 2px solid variables.$primary-color;
+    }
+    input {
+        flex-grow: 1;
+        font-size: 1.8rem;
+        color: variables.$primary-color;
+    }::placeholder{
+        color: variables.$primary-color;
+    }
+    button {
+        width: 2.4rem;
+        height: 2.4rem;
+        svg {
+            width: 100%;
+            height: auto;
+            stroke: variables.$primary-color;
+        }
+    }   
+}
+
+#collectionsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+
+    padding-block: 1rem;
+
+    .list_item {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        text-decoration: none;
+
+        picture, img {
+            width: 100%;
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: variables.$font-regular;
+            height: 3.2rem;
+            text-overflow: ellipsis;
+            margin-top: .6rem;
+            color: variables.$primary-color;
+            text-transform: uppercase;
+        }
+    }
+    .list_item:hover{
+        transform: scale(1.05);
+        transition: transform variables.$anim_speed;
+    }
+}
+// Tablet
+@media (min-width: variables.$md) {
+  nav>div {
+    max-width: 1000px;
+  }
+}
+
+// Desktop
+@media (min-width: variables.$xl) {
+  nav>div {
+    max-width: 1500px;
+  }
+}
