@@ -1,9 +1,12 @@
 // COLORS
-$primary-color:     hsla(4, 100%, 61%, 1);
-$secondary-color:   hsla(0, 0%, 0%, 1);
-$secondary-medium:  hsla(0, 0%, 59%, 1);
-$secondary-light:   hsla(0, 0%, 67%, 1);
-$white:             hsla(0, 0%, 100%, 1);
+$primary-color:     hsla(4, 100%,  61%, 1);
+$primary-medium:    hsla(4, 100%,  67%, 1);
+$primary-light:     hsla(4,  97%,  76%, 1);
+$secondary-color:   hsla(0,   0%,   0%, 1);
+$secondary-medium:  hsla(0,   0%,  59%, 1);
+$secondary-light:   hsla(0,   0%,  67%, 1);
+$secondary-faint:   hsla(0,   0%,  83%, 1);
+$white:             hsla(0,   0%, 100%, 1);
 
 // FONTS
 $font-stack:    montserrat, sans-serif;

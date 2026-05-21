@@ -21,27 +21,147 @@ html {scrollbar-gutter: stable;}
     outline: .1rem solid variables.$primary-color;
     outline-offset: .2rem;
 }
-button {
-    background-color: transparent;
-    border: 0;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   html {
     interpolate-size: allow-keywords;
   }
 }
-
 body {
     background-color: variables.$white;
     color: variables.$secondary-light;
     
     font-family: variables.$font-stack;
-
-    // overflow-x: hidden;
 }
+button {
+    background-color: transparent;
+    border: 0;
+}
+h1 {font-size: 1.8rem;}
+h2 {font-size: 2.4rem;}
+h3 {font-size: 1.2rem;}
+h1, h2, h3 {
+    color: variables.$primary-color;
+    font-weight: variables.$font-bold;
+}
+h2 {color: variables.$secondary-color;}
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: variables.$font-regular;
+    color: variables.$primary-color;
+}
+.flex   {display: flex;}
+.flex-col {flex-direction: column;}
+.w-1\/2 {width: 50%;}
+.w-1\/3 {width: 33.3%;}
+.w-2\/3 {width: 66.6%;}
 
 // Mobile
+%btn {
+    font-size: 1.2rem;
+    font-family: variables.$font-stack;
+    width: 100%;
+    max-width: 25rem;
+
+    position: relative;
+
+    margin-block: 1rem;
+    margin-inline: auto;
+    
+    flex: auto;
+
+    cursor: pointer;
+
+    padding-inline: 2rem;
+    padding-block: 1.5rem;
+
+    transition: all variables.$anim_speed;
+
+    background-color: var(--main_color);
+    color: var(--contr_color);
+    border-color: var(--frame_color);
+    box-shadow: 0px 4px 4px 0px variables.$secondary-faint;
+
+}
+.btn::after {
+    content: var(--icon);
+    position: absolute;
+    right: 4rem;
+
+    opacity: 0;
+    margin-left: 1rem;
+
+    font-size: 2rem;
+    line-height: 1.3rem;
+    transition: all variables.$anim_speed;
+}
+.btn:hover::after {
+    right: 2rem;
+    opacity: 1;
+}
+.icon-prev  {--icon: '🠈';}
+.icon-next  {--icon: '🠊';}
+.icon-check {--icon: '✔';}
+.icon-x     {--icon: '✖';}
+.icon-warn  {--icon: '⚠';}
+
+.btn-primary {
+    @extend %btn;
+    --main_color: #{variables.$primary-color};
+    --contr_color: #{variables.$white};
+    --frame_color: var(--main_color);
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    --main_color: #{variables.$primary-light};
+}
+.btn-secondary {
+    @extend %btn;
+    --main_color: #{variables.$secondary-color};
+    --contr_color: #{variables.$white};
+    --frame_color: var(--main_color);
+}
+.ghost {
+    @extend %btn;
+    --frame_color: var(--main_color);
+    --contr_color: var(--main_color);
+    background-color: variables.$white;
+    border-width: .3rem;
+    border-style: solid;
+}
+.errorField {
+    position: relative;
+    display: none; //flex;
+
+    max-width: 25rem;
+
+    margin-inline: auto;
+    padding-left: 2.4rem;
+
+    font-size: 1rem;
+    line-height: 1.25rem;
+    text-align: center;
+
+    color: variables.$secondary-color;
+}
+.errorField::before {
+    content: var(--icon);
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    align-self: center;
+    margin-right: 1rem;
+
+    font-size: 2.4rem;
+    color: variables.$primary-color;
+}
+.errorField.show {
+    display: flex;
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -153,9 +273,14 @@ nav {
                 color: variables.$white;
             }
             button {
-                opacity: 0;
-                width: 2.4rem;
                 height: 2.4rem;
+                width: 2.4rem;
+
+                opacity: 0;
+
+                cursor: pointer;
+
+                transition: opacity variables.$anim_speed;
             }
         }
         .inputframe:hover button,
@@ -251,12 +376,9 @@ main {
             padding: 0;
         }
         h3 {
-            font-size: 1.2rem;
-            font-weight: variables.$font-regular;
             height: 3.2rem;
             text-overflow: ellipsis;
             margin-top: .6rem;
-            color: variables.$primary-color;
             text-transform: uppercase;
         }
     }
@@ -265,6 +387,146 @@ main {
         transition: transform variables.$anim_speed;
     }
 }
+
+form#tickets {
+    // background-color: antiquewhite;
+
+    margin-block: 1rem;
+
+    fieldset {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: .2rem solid variables.$secondary-faint;
+        label {
+            position: relative;
+
+            padding-block: .5rem;
+            padding-inline: 1rem;
+
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: variables.$font-bold;
+            color: variables.$secondary-medium;
+
+            transition: margin variables.$anim_speed ease;
+
+            input[type="radio"] {
+                display: none;
+            }
+        }
+        label.active {
+            color: variables.$secondary-color;
+            margin-top: -0.25rem;
+        }
+        .indicator {
+            position: absolute;
+            bottom: -.2rem;
+            left: 0;
+
+            height: 3px;
+            width: 0;
+
+            background: variables.$primary-color;
+
+            transition:
+                transform variables.$anim_speed ease,
+                width variables.$anim_speed ease;
+        }
+    }
+    #dateinfo {
+        position: relative;
+        padding: 1rem;
+        font-size: 1.2rem;
+        font-weight: variables.$font-bold;
+        text-align: center;
+        color: variables.$secondary-color;
+    }
+    #info_today,
+    #info_tomorrow,
+    #info_other {
+        display: none;
+        height: auto;
+        padding-block: .5rem;
+        padding-inline: 1rem;
+        opacity: 0;
+        transition: opacity variables.$anim_speed ease;
+    }
+    #info_today.show,
+    #info_tomorrow.show,
+    #info_other.show {
+        display: flex;
+        flex-direction: column;
+        gap: .1rem;
+        opacity: 1;
+        text-align: center;
+    }
+    #info_other {
+        h3 {margin-bottom: 1rem; font-size: 1.8rem;}
+    }
+    #customDate {
+        padding-inline: 1rem;
+        padding-block: 1rem;
+        margin: auto;
+        background-color: variables.$white;
+        color: variables.$primary-color;
+    }
+    .ticket_options {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding-block: 2rem;
+        padding-inline: 1rem;
+    }
+    .ticket_type_wrap {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        .ticket_tier {
+            font-size: 1.8rem;
+            font-weight: variables.$font-bold;
+            color: variables.$secondary-color;
+        }
+        .subtitle {
+            color: variables.$secondary-faint;
+            font-size: 1.2rem;
+            min-height: 1.6rem;
+        }
+    }
+    .amount_selector {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        font-size: 1.8rem;
+        .current_amount {
+            width: 1.2rem;
+            color: variables.$secondary-color;
+            font-size: 1.8rem;
+            text-align: center;
+            
+            -moz-appearance: textfield;
+        }
+        .current_amount::-webkit-outer-spin-button,
+        .current_amount::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .one_less,
+        .one_more {
+            border: 1px solid variables.$secondary-faint;
+            width: 1.8rem;
+            height: 1.8rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
 // Tablet
 @media (min-width: variables.$md) {
   nav>div {
@@ -277,4 +539,27 @@ main {
   nav>div {
     max-width: 1500px;
   }
+}
+
+// extras
+.timeSelectorPanel {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem #ccc;
+    background-color: antiquewhite;
+    font-weight: bold;
+    font-size: 16px;
+    #dateTest {
+        margin-block: 1rem;
+        margin-inline: auto;
+        padding: 1rem;
+        border: 2px solid darkgray;
+        border-radius: 1rem;
+    }
 }

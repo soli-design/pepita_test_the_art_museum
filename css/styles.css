@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   font-size: 10px;
 }
@@ -22,11 +23,6 @@ html {
   outline-offset: 0.2rem;
 }
 
-button {
-  background-color: transparent;
-  border: 0;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     interpolate-size: allow-keywords;
@@ -36,6 +32,166 @@ body {
   background-color: hsl(0, 0%, 100%);
   color: hsl(0, 0%, 67%);
   font-family: montserrat, sans-serif;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h1, h2, h3 {
+  color: hsl(4, 100%, 61%);
+  font-weight: 600;
+}
+
+h2 {
+  color: hsl(0, 0%, 0%);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: hsl(4, 100%, 61%);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-1\/3 {
+  width: 33.3%;
+}
+
+.w-2\/3 {
+  width: 66.6%;
+}
+
+.ghost, .btn-secondary, .btn-primary {
+  font-size: 1.2rem;
+  font-family: montserrat, sans-serif;
+  width: 100%;
+  max-width: 25rem;
+  position: relative;
+  margin-block: 1rem;
+  margin-inline: auto;
+  flex: auto;
+  cursor: pointer;
+  padding-inline: 2rem;
+  padding-block: 1.5rem;
+  transition: all 300ms;
+  background-color: var(--main_color);
+  color: var(--contr_color);
+  border-color: var(--frame_color);
+  box-shadow: 0px 4px 4px 0px hsl(0, 0%, 83%);
+}
+
+.btn::after {
+  content: var(--icon);
+  position: absolute;
+  right: 4rem;
+  opacity: 0;
+  margin-left: 1rem;
+  font-size: 2rem;
+  line-height: 1.3rem;
+  transition: all 300ms;
+}
+
+.btn:hover::after {
+  right: 2rem;
+  opacity: 1;
+}
+
+.icon-prev {
+  --icon: '🠈';
+}
+
+.icon-next {
+  --icon: '🠊';
+}
+
+.icon-check {
+  --icon: '✔';
+}
+
+.icon-x {
+  --icon: '✖';
+}
+
+.icon-warn {
+  --icon: '⚠';
+}
+
+.btn-primary {
+  --main_color: hsl(4, 100%, 61%);
+  --contr_color: hsl(0, 0%, 100%);
+  --frame_color: var(--main_color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  --main_color: hsl(4, 97%, 76%);
+}
+
+.btn-secondary {
+  --main_color: hsl(0, 0%, 0%);
+  --contr_color: hsl(0, 0%, 100%);
+  --frame_color: var(--main_color);
+}
+
+.ghost {
+  --frame_color: var(--main_color);
+  --contr_color: var(--main_color);
+  background-color: hsl(0, 0%, 100%);
+  border-width: 0.3rem;
+  border-style: solid;
+}
+
+.errorField {
+  position: relative;
+  display: none;
+  max-width: 25rem;
+  margin-inline: auto;
+  padding-left: 2.4rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  text-align: center;
+  color: hsl(0, 0%, 0%);
+}
+
+.errorField::before {
+  content: var(--icon);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  align-self: center;
+  margin-right: 1rem;
+  font-size: 2.4rem;
+  color: hsl(4, 100%, 61%);
+}
+
+.errorField.show {
+  display: flex;
 }
 
 nav {
@@ -133,9 +289,11 @@ nav button svg {
   color: hsl(0, 0%, 100%);
 }
 #menushelf #globalsearch .inputframe button {
-  opacity: 0;
-  width: 2.4rem;
   height: 2.4rem;
+  width: 2.4rem;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 300ms;
 }
 #menushelf #globalsearch .inputframe:hover button,
 #menushelf #globalsearch .inputframe:focus-within button {
@@ -221,17 +379,141 @@ main {
   padding: 0;
 }
 #collectionsList .list_item h3 {
-  font-size: 1.2rem;
-  font-weight: 400;
   height: 3.2rem;
   text-overflow: ellipsis;
   margin-top: 0.6rem;
-  color: hsl(4, 100%, 61%);
   text-transform: uppercase;
 }
 #collectionsList .list_item:hover {
   transform: scale(1.05);
   transition: transform 300ms;
+}
+
+form#tickets {
+  margin-block: 1rem;
+}
+form#tickets fieldset {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 0.2rem solid hsl(0, 0%, 83%);
+}
+form#tickets fieldset label {
+  position: relative;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 600;
+  color: hsl(0, 0%, 59%);
+  transition: margin 300ms ease;
+}
+form#tickets fieldset label input[type=radio] {
+  display: none;
+}
+form#tickets fieldset label.active {
+  color: hsl(0, 0%, 0%);
+  margin-top: -0.25rem;
+}
+form#tickets fieldset .indicator {
+  position: absolute;
+  bottom: -0.2rem;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: hsl(4, 100%, 61%);
+  transition: transform 300ms ease, width 300ms ease;
+}
+form#tickets #dateinfo {
+  position: relative;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: hsl(0, 0%, 0%);
+}
+form#tickets #info_today,
+form#tickets #info_tomorrow,
+form#tickets #info_other {
+  display: none;
+  height: auto;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+form#tickets #info_today.show,
+form#tickets #info_tomorrow.show,
+form#tickets #info_other.show {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  opacity: 1;
+  text-align: center;
+}
+form#tickets #info_other h3 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+form#tickets #customDate {
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  margin: auto;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(4, 100%, 61%);
+}
+form#tickets .ticket_options {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 2rem;
+  padding-inline: 1rem;
+}
+form#tickets .ticket_type_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+form#tickets .ticket_type_wrap .ticket_tier {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: hsl(0, 0%, 0%);
+}
+form#tickets .ticket_type_wrap .subtitle {
+  color: hsl(0, 0%, 83%);
+  font-size: 1.2rem;
+  min-height: 1.6rem;
+}
+form#tickets .amount_selector {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  font-size: 1.8rem;
+}
+form#tickets .amount_selector .current_amount {
+  width: 1.2rem;
+  color: hsl(0, 0%, 0%);
+  font-size: 1.8rem;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+form#tickets .amount_selector .current_amount::-webkit-outer-spin-button,
+form#tickets .amount_selector .current_amount::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+form#tickets .amount_selector .one_less,
+form#tickets .amount_selector .one_more {
+  border: 1px solid hsl(0, 0%, 83%);
+  width: 1.8rem;
+  height: 1.8rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 769px) {
@@ -243,6 +525,27 @@ main {
   nav > div {
     max-width: 1500px;
   }
+}
+.timeSelectorPanel {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem #ccc;
+  background-color: antiquewhite;
+  font-weight: bold;
+  font-size: 16px;
+}
+.timeSelectorPanel #dateTest {
+  margin-block: 1rem;
+  margin-inline: auto;
+  padding: 1rem;
+  border: 2px solid darkgray;
+  border-radius: 1rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

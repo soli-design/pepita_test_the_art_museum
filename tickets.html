@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -110,77 +110,121 @@
 
     <main>
 
-        <div id="localsearch">
+        <div class="w-2/3">
+            <h2>
+                Skip the line.<br>Purchase Tickets.
+            </h2>
+            <p class="subtitle">
+                All exhibitions, audio tours, and films included in the price of admission.
+            </p>
+        </div>
+
+        <form action="POST" id="tickets" class="flex flex-col">
             <div>
-                <input type="text" id="in_localSearch" name="in_localSearch" placeholder="Explore the Collection">
-                <button>
-                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" line-width="2" stroke-linecap="square" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.36396 14.1569C9.48815 17.2811 14.5535 17.2811 17.6777 14.1569C20.8019 11.0327 20.8019 5.96735 17.6777 2.84315C14.5535 -0.281049 9.48815 -0.281049 6.36396 2.84315C3.23976 5.96735 3.23976 11.0327 6.36396 14.1569ZM6.36396 14.1569L0.707099 19.8137"/>
-                    </svg>
-                </button>
+                <fieldset id="dateselection" aria-label="Pick the day of your visit">
+                    <label>
+                        <input type="radio" name="dateselection" value="today" id="in_date_today">
+                        <span>Today</span>
+                    </label>
+                    <label class="active">
+                        <input type="radio" name="dateselection" value="tomorrow" id="in_date_tomorrow" checked>
+                        <span>Tomorrow</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="dateselection" value="other" id="in_date_other">
+                        <span>Other</span>
+                    </label>
+                    <div class="indicator"></div>
+                </fieldset>
+                <div id="dateinfo">
+                    <div id="info_today">
+                        today
+                    </div>
+                    <div id="info_tomorrow" class="show">
+                        tomorrow
+                    </div>
+                    <div id="info_other">
+                        <h3>Pick your date</h3>
+                        <input type="date" id="customDate">
+                        <div id="info_other_open">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a id="advSearchBtn" role="button">Advanced search</a>
-        </div>
 
-        <div id="collectionsList">
-        </div>
-<script>
-// DRY
-let listItems = [
-    {
-        "title" : "Decorative<br>arts&nbsp;&&nbsp;crafts",
-        "href"  : "#",
-        "img"   :"/images/Mask Group.jpg"
-    },
-    {
-        "title" : "American<br>Impressionism",
-        "href"  : "#",
-        "img"   : "/images/Mask Group-1.jpg"
-    },
-    {
-        "title" : "De stijl",
-        "href"  : "#",
-        "img"   : "/images/Mask Group-2.jpg"
-    },
-    {
-        "title" : "Cubism",
-        "href"  : "#",
-        "img"   : "/images/Mask Group-3.jpg"
-    },
-    {
-        "title" : "American<br>photography",
-        "href"  : "#",
-        "img"   : "/images/Mask Group-4.jpg"
-    },
-    {
-        "title" : "Greek antiques",
-        "href"  : "#",
-        "img"   : "/images/Mask Group-5.jpg"
-    },
-]
-function generateList(data) {
-    let item = document.createElement('a');
-    item.setAttribute('href',data.href);
-    item.classList.add('list_item');
+            <div class="ticket_options">
+                <div class="ticket_type_wrap"><!-- adult -->
+                    <div>
+                        <div class="ticket_tier">Adults</div>
+                        <div class="subtitle">&nbsp;</div>
+                    </div>
+                    <div class="amount_selector">
+                        <button type="button" class="one_less">-</button>
+                        <input
+                            type="number"
+                            value="0"
+                            min="0"
+                            max="99"
+                            step="1"
+                            class="current_amount"
+                        >
+                        <button type="button" class="one_more">+</button>
+                    </div>
+                </div>
+                <div class="ticket_type_wrap"><!-- senior -->
+                    <div>
+                        <div class="ticket_tier">Seniors</div>
+                        <div class="subtitle">65+ with ID</div>
+                    </div>
+                    <div class="amount_selector">
+                        <button type="button" class="one_less">-</button>
+                        <input
+                            type="number"
+                            value="0"
+                            min="0"
+                            max="99"
+                            step="1"
+                            class="current_amount"
+                        >
+                        <button type="button" class="one_more">+</button>
+                    </div>
+                </div>
+                <div class="ticket_type_wrap"><!-- student -->
+                    <div>
+                        <div class="ticket_tier">Students</div>
+                        <div class="subtitle">with ID</div>
+                    </div>
+                    <div class="amount_selector">
+                        <button type="button" class="one_less">-</button>
+                        <input
+                            type="number"
+                            value="0"
+                            min="0"
+                            max="99"
+                            step="1"
+                            class="current_amount"
+                        >
+                        <button type="button" class="one_more">+</button>
+                    </div>
+                </div>
+                
+            </div>
 
-    let img = document.createElement('img');
-    img.src = data.img;
-        
-    let title = document.createElement('h3');
-    title.innerHTML = data.title;
+            <button class="btn btn-primary icon-next" onclick="logFieldsetState(event, dateselection);">Continue to Payment</button>
+            <div id="formErrorField" class="errorField icon-warn">
+                this is a pretty long error message for 
+            </div>
 
-    item.append(img);
-    item.append(title);
-    return item;
-}
-listItems.forEach(d => {
-    collectionsList.append(generateList(d));
-});
-</script>
-
+        </form>
         
     </main>
 
+    <div class="timeSelectorPanel">
+        <p>Set time to see the message change!</p>
+        <input type="datetime-local" id="dateTest">
+    </div>
     <script src="js/features.js"></script>
+
 </body>
 </html>
