@@ -154,61 +154,76 @@
             </div>
 
             <div class="ticket_options">
-                <div class="ticket_type_wrap"><!-- adult -->
+                <div class="ticket_type_wrap"><!-- count stepper :: adult -->
                     <div>
                         <div class="ticket_tier">Adults</div>
                         <div class="subtitle">&nbsp;</div>
                     </div>
                     <div class="amount_selector">
-                        <button type="button" class="one_less">-</button>
+                        <button type="button" class="one_less" id="btn_ol_adult">-</button>
                         <input
+                            id="adult_ticket_amount"
                             type="number"
+                            placeholder="0"
                             value="0"
                             min="0"
                             max="99"
                             step="1"
-                            class="current_amount"
+                            class="current_amount color-secondary-faint"
                         >
-                        <button type="button" class="one_more">+</button>
+                        <button type="button" class="one_more" id="btn_om_adult">+</button>
                     </div>
                 </div>
-                <div class="ticket_type_wrap"><!-- senior -->
+                <div class="ticket_type_wrap"><!-- count stepper :: senior -->
                     <div>
                         <div class="ticket_tier">Seniors</div>
                         <div class="subtitle">65+ with ID</div>
                     </div>
                     <div class="amount_selector">
-                        <button type="button" class="one_less">-</button>
+                        <button type="button" class="one_less" id="btn_ol_senior">-</button>
                         <input
+                            id="senior_ticket_amount"
                             type="number"
+                            placeholder="0"
                             value="0"
                             min="0"
                             max="99"
                             step="1"
-                            class="current_amount"
+                            class="current_amount color-secondary-faint"
                         >
-                        <button type="button" class="one_more">+</button>
+                        <button type="button" class="one_more" id="btn_om_senior">+</button>
                     </div>
                 </div>
-                <div class="ticket_type_wrap"><!-- student -->
+                <div class="ticket_type_wrap"><!-- count stepper :: student -->
                     <div>
                         <div class="ticket_tier">Students</div>
                         <div class="subtitle">with ID</div>
                     </div>
                     <div class="amount_selector">
-                        <button type="button" class="one_less">-</button>
+                        <button type="button" class="one_less" id="btn_ol_student">-</button>
                         <input
+                            id="student_ticket_amount"
                             type="number"
+                            placeholder="0"
                             value="0"
                             min="0"
                             max="99"
                             step="1"
-                            class="current_amount"
+                            class="current_amount color-secondary-faint"
                         >
-                        <button type="button" class="one_more">+</button>
+                        <button type="button" class="one_more" id="btn_om_student">+</button>
                     </div>
                 </div>
                 
+            </div>
+            <div id="total">
+                <div>Total</div>
+                <div class="total_field">
+                    <span>$</span>
+                    <output>
+                        0
+                    </output>
+                </div>
             </div>
 
             <button class="btn btn-primary icon-next" onclick="logFieldsetState(event, dateselection);">Continue to Payment</button>
@@ -225,6 +240,7 @@
         <input type="datetime-local" id="dateTest">
     </div>
     <script src="js/features.js"></script>
+    <script src="js/tickets.js"></script>
 
 </body>
 </html>

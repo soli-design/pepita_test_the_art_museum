@@ -17,16 +17,24 @@ html {scrollbar-gutter: stable;}
     border: 0;
     // border: 1px solid green;
 }
-*:focus-visible {
+*:focus-visible:not(.noframe) {
     outline: .1rem solid variables.$primary-color;
     outline-offset: .2rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html {
+  * {
     interpolate-size: allow-keywords;
+    transition-duration: variables.$anim_speed;
+    transition-timing-function: ease;
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0ms;
+  }
+}
+
 body {
     background-color: variables.$white;
     color: variables.$secondary-light;
@@ -49,86 +57,49 @@ h2 {color: variables.$secondary-color;}
     font-size: 1.2rem;
     font-weight: variables.$font-regular;
     color: variables.$primary-color;
+    max-width: 30ch;
 }
+
+.color-primary {
+    color: variables.$primary-color;
+}
+.color-primary-medium {
+    color: variables.$primary-medium;
+}
+.color-primary-light {
+    color: variables.$primary-light;
+}
+.color-secondary {
+    color: variables.$secondary-color;
+}
+.color-secondary-medium {
+    color: variables.$secondary-medium;
+}
+.color-secondary-faint {
+    color: variables.$secondary-light;
+}
+.color-secondary-light {
+    color: variables.$secondary-faint;
+}
+
+
 .flex   {display: flex;}
 .flex-col {flex-direction: column;}
 .w-1\/2 {width: 50%;}
 .w-1\/3 {width: 33.3%;}
 .w-2\/3 {width: 66.6%;}
-
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+.p-1 {padding: 0.25rem;}
+.p-2 {padding: 0.5rem;}
+.p-3 {padding: 0.75rem;}
+.p-4 {padding: 1rem;}
+.noframe {border: 0 !important; outline: 0 !important;}
+.w-auto {width: auto;}
 // Mobile
-%btn {
-    font-size: 1.2rem;
-    font-family: variables.$font-stack;
-    width: 100%;
-    max-width: 25rem;
 
-    position: relative;
-
-    margin-block: 1rem;
-    margin-inline: auto;
-    
-    flex: auto;
-
-    cursor: pointer;
-
-    padding-inline: 2rem;
-    padding-block: 1.5rem;
-
-    transition: all variables.$anim_speed;
-
-    background-color: var(--main_color);
-    color: var(--contr_color);
-    border-color: var(--frame_color);
-    box-shadow: 0px 4px 4px 0px variables.$secondary-faint;
-
-}
-.btn::after {
-    content: var(--icon);
-    position: absolute;
-    right: 4rem;
-
-    opacity: 0;
-    margin-left: 1rem;
-
-    font-size: 2rem;
-    line-height: 1.3rem;
-    transition: all variables.$anim_speed;
-}
-.btn:hover::after {
-    right: 2rem;
-    opacity: 1;
-}
-.icon-prev  {--icon: '🠈';}
-.icon-next  {--icon: '🠊';}
-.icon-check {--icon: '✔';}
-.icon-x     {--icon: '✖';}
-.icon-warn  {--icon: '⚠';}
-
-.btn-primary {
-    @extend %btn;
-    --main_color: #{variables.$primary-color};
-    --contr_color: #{variables.$white};
-    --frame_color: var(--main_color);
-}
-.btn-primary:hover,
-.btn-primary:focus-visible {
-    --main_color: #{variables.$primary-light};
-}
-.btn-secondary {
-    @extend %btn;
-    --main_color: #{variables.$secondary-color};
-    --contr_color: #{variables.$white};
-    --frame_color: var(--main_color);
-}
-.ghost {
-    @extend %btn;
-    --frame_color: var(--main_color);
-    --contr_color: var(--main_color);
-    background-color: variables.$white;
-    border-width: .3rem;
-    border-style: solid;
-}
 .errorField {
     position: relative;
     display: none; //flex;
@@ -171,18 +142,19 @@ nav {
     height: 6rem;
     z-index: 99;
 
-    padding-inline: 1.2rem;
-
     display: flex;
     justify-items: center;
     align-items: center;
 
+    background-color: variables.$white;
+
     div {
-        width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
+        padding-inline: 1.2rem;
     }
     #logo {
         font-weight: variables.$font-bold;
@@ -280,7 +252,7 @@ nav {
 
                 cursor: pointer;
 
-                transition: opacity variables.$anim_speed;
+                transition: opacity;
             }
         }
         .inputframe:hover button,
@@ -316,15 +288,6 @@ main {
     padding-block: 0.9rem;
 }
 #localsearch {
-    #advSearchBtn {
-        display: block;
-        padding-block: 0.6rem;
-
-        color: variables.$primary-color;
-
-        font-weight: variables.$font-bold;
-        font-size: 1.2rem;
-    }
     div {
         display: flex;
         flex-direction: row;
@@ -346,12 +309,44 @@ main {
     button {
         width: 2.4rem;
         height: 2.4rem;
+        cursor: pointer;
         svg {
             width: 100%;
             height: auto;
             stroke: variables.$primary-color;
         }
-    }   
+    }
+    button:hover svg {
+        stroke-width: 0.2rem;
+    }
+    #advSearchBtn {
+        display: block;
+        padding-block: 0.6rem;
+    
+        color: variables.$primary-color;
+    
+        cursor: pointer;
+    
+        font-weight: variables.$font-bold;
+        font-size: 1.2rem;
+    }
+    #advSearchPanel {
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+        height: 0;
+    
+        border: 0;
+        opacity: 0;
+        transition: height variables.$anim_speed ease-out,
+                    opacity variables.$anim_speed ease;
+        * {overflow: hidden;}
+    }
+    #advSearchPanel.open {
+        height: auto;
+        opacity: 1;
+    }
 }
 
 #collectionsList {
@@ -389,8 +384,6 @@ main {
 }
 
 form#tickets {
-    // background-color: antiquewhite;
-
     margin-block: 1rem;
 
     fieldset {
@@ -410,7 +403,7 @@ form#tickets {
             font-weight: variables.$font-bold;
             color: variables.$secondary-medium;
 
-            transition: margin variables.$anim_speed ease;
+            transition: margin;
 
             input[type="radio"] {
                 display: none;
@@ -431,8 +424,8 @@ form#tickets {
             background: variables.$primary-color;
 
             transition:
-                transform variables.$anim_speed ease,
-                width variables.$anim_speed ease;
+                transform,
+                width;
         }
     }
     #dateinfo {
@@ -451,7 +444,7 @@ form#tickets {
         padding-block: .5rem;
         padding-inline: 1rem;
         opacity: 0;
-        transition: opacity variables.$anim_speed ease;
+        transition: opacity;
     }
     #info_today.show,
     #info_tomorrow.show,
@@ -476,7 +469,7 @@ form#tickets {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        padding-block: 2rem;
+        padding-block: 4rem;
         padding-inline: 1rem;
     }
     .ticket_type_wrap {
@@ -501,14 +494,20 @@ form#tickets {
         flex-direction: row;
         gap: 1rem;
         font-size: 1.8rem;
+        color: variables.$secondary-color;
         .current_amount {
             width: 1.2rem;
-            color: variables.$secondary-color;
             font-size: 1.8rem;
             text-align: center;
-            
+
             -moz-appearance: textfield;
         }
+        .current_amount::placeholder {
+            color: variables.$secondary-faint;
+        }
+        // .current_amount[value="0"]{
+        //     color: variables.$secondary-faint;
+        // }
         .current_amount::-webkit-outer-spin-button,
         .current_amount::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -525,19 +524,48 @@ form#tickets {
             align-items: center;
         }
     }
+    #total {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding-inline: 1rem;
+        padding-block: .5rem;
+
+        font-size: 1.8rem;
+        color: variables.$secondary-color;
+        font-weight: variables.$font-bold;
+
+        border-top: .2rem solid variables.$primary-color;
+
+        .total_field {
+            min-width: 7rem;
+            text-align: center;
+        }
+    }
 }
 
 // Tablet
 @media (min-width: variables.$md) {
-  nav>div {
+  nav>div,
+  main {
     max-width: 1000px;
+    margin-inline: auto;
   }
+  #menushelf {
+    right: 50%;
+  }
+
 }
 
 // Desktop
 @media (min-width: variables.$xl) {
-  nav>div {
-    max-width: 1500px;
+  nav>div,
+  main {
+    max-width: 1250px;
+  }
+  #menushelf {
+    right: 65%;
   }
 }
 

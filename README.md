@@ -32,24 +32,3 @@ Sok sikert kívánok a feladathoz!
 
 Üdv
 Fekete Zoltán
-
-# Napló
-## 2026-05-19 - initial
-Felbontom a teljes designt komponensekre és megnézem, milyen szabályok kell, hogy érvényesüljenek. Legyűjtöm a design system jellegzetességeit.
-### Components
-
-> NAV
-
-logo | page name | hamburger menu
---> shelf menu
-icon | label
-
-> list item
-
-image | link caption
-
-> button
-
-text
-
-> 

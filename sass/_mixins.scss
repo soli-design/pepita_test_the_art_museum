@@ -1,0 +1,88 @@
+@use 'variables';
+
+%btn {
+    font-size: 1.2rem;
+    font-family: variables.$font-stack;
+    width: 100%;
+    max-width: 25rem;
+
+    position: relative;
+
+    margin-block: 1rem;
+    margin-inline: auto;
+    
+    flex: auto;
+
+    cursor: pointer;
+
+    padding-inline: 2rem;
+    padding-block: 1.5rem;
+
+    transition:
+            color variables.$anim_speed,
+            border-color variables.$anim_speed,
+            background-color variables.$anim_speed;
+
+    background-color: var(--main_color);
+    color: var(--contr_color);
+    border-color: var(--frame_color);
+    box-shadow: 0 .4rem .4rem 0 variables.$secondary-faint;
+
+}
+.btn::after {
+    content: var(--icon);
+    position: absolute;
+    right: 4rem;
+
+    opacity: 0;
+    margin-left: 1rem;
+
+    font-size: 2rem;
+    line-height: 1.3rem;
+    transition: 
+            right variables.$anim_speed,
+            opacity variables.$anim_speed;
+}
+.btn:hover::after {
+    right: 2rem;
+    opacity: 1;
+}
+.icon-prev  {--icon: '🠈';}
+.icon-next  {--icon: '🠊';}
+.icon-check {--icon: '✔';}
+.icon-x     {--icon: '✖';}
+.icon-warn  {--icon: '⚠';}
+
+
+@mixin button-theme($main, $contrast) {
+    --main_color: #{$main};
+    --contr_color: #{$contrast};
+    --frame_color: var(--main_color);
+}
+
+.btn-primary {
+    @extend %btn;
+    @include button-theme(
+        variables.$primary-color,
+        variables.$white
+    );
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    --main_color: #{variables.$primary-light};
+}
+.btn-secondary {
+    @extend %btn;
+    @include button-theme(
+        variables.$secondary-color,
+        variables.$white
+    );
+}
+.btn-ghost {
+    @extend %btn;
+    --frame_color: var(--main_color);
+    --contr_color: var(--main_color);
+    background-color: variables.$white;
+    border-width: .3rem;
+    border-style: solid;
+}

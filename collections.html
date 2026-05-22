@@ -112,14 +112,19 @@
 
         <div id="localsearch">
             <div>
-                <input type="text" id="in_localSearch" name="in_localSearch" placeholder="Explore the Collection">
-                <button>
+                <input type="text" class="noframe" id="in_localSearch" name="in_localSearch" placeholder="Explore the Collection">
+                <button aria-label="Start search">
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" line-width="2" stroke-linecap="square" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.36396 14.1569C9.48815 17.2811 14.5535 17.2811 17.6777 14.1569C20.8019 11.0327 20.8019 5.96735 17.6777 2.84315C14.5535 -0.281049 9.48815 -0.281049 6.36396 2.84315C3.23976 5.96735 3.23976 11.0327 6.36396 14.1569ZM6.36396 14.1569L0.707099 19.8137"/>
                     </svg>
                 </button>
             </div>
-            <a id="advSearchBtn" role="button">Advanced search</a>
+            <a onclick="toggleAdvSearchPanel(event)" id="advSearchBtn" role="button">Advanced search</a>
+            <div id="advSearchPanel">
+                
+                <p>... Keresési lehetőségek helye ...</p>
+
+            </div>
         </div>
 
         <div id="collectionsList">
@@ -128,7 +133,7 @@
 // DRY
 let listItems = [
     {
-        "title" : "Decorative<br>arts&nbsp;&&nbsp;crafts",
+        "title" : "Decorative<br>arts&nbsp;&amp;&nbsp;crafts",
         "href"  : "#",
         "img"   :"/images/Mask Group.jpg"
     },
@@ -158,7 +163,7 @@ let listItems = [
         "img"   : "/images/Mask Group-5.jpg"
     },
 ]
-function generateList(data) {
+function generateListItem(data) {
     let item = document.createElement('a');
     item.setAttribute('href',data.href);
     item.classList.add('list_item');
@@ -171,16 +176,16 @@ function generateList(data) {
 
     item.append(img);
     item.append(title);
+
     return item;
 }
-listItems.forEach(d => {
-    collectionsList.append(generateList(d));
-});
+listItems.forEach(d => {collectionsList.append(generateListItem(d));});
 </script>
 
         
     </main>
 
     <script src="js/features.js"></script>
+    <script src="js/collections.js"></script>
 </body>
 </html>

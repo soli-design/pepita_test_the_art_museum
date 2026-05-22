@@ -1,3 +1,32 @@
+// FONTS
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    local("montserrat"),
+    local("montserrat-light"),
+    url("../fonts/Montserrat/static_woff/Montserrat-Light.woff");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    local("montserrat"),
+    local("montserrat-regular"),
+    url("../fonts/Montserrat/static_woff/Montserrat-Regular.woff");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    local("montserrat"),
+    local("montserrat-bold"),
+    url("../fonts/Montserrat/static_woff/Montserrat-Bold.woff");
+  font-weight: 600;
+}
+
 // COLORS
 $primary-color:     hsla(4, 100%,  61%, 1);
 $primary-medium:    hsla(4, 100%,  67%, 1);
@@ -9,7 +38,7 @@ $secondary-faint:   hsla(0,   0%,  83%, 1);
 $white:             hsla(0,   0%, 100%, 1);
 
 // FONTS
-$font-stack:    montserrat, sans-serif;
+$font-stack:    "Montserrat", sans-serif;
 $font-light:    300;
 $font-regular:  400;
 $font-bold:     600; // a design-ban 400-at ír a figma pár helyen, de ránézésre inkább 600-as. Lehet, hogy font verzió különbség van?
