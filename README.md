@@ -1,9 +1,4 @@
-# pepita_test_the_art_museum
-Felvételi próbafeladat 2026
-
-# Brief
-
-Fekete, Zoltán <fekete.zoltan@pepita.hu>
+██████, ██████ <███████████████████████>
 2026. máj. 18. 15:25 (18 órával ezelőtt)
 címzett: én
 
@@ -31,4 +26,17 @@ Határidő: május 25.
 Sok sikert kívánok a feladathoz!
 
 Üdv
-Fekete Zoltán
+██████ ██████
+
+---
+Amit megvalósítottam:
+- ✓ Beúszó menü
+- ✓ Collections oldal
+  - ✓ Advanced search lenyitható (bár üres)
+- ✓ Tickets oldal
+  - ✓ nap választó átkattintható
+  - ✓ nyitvatartás a kiválasztott napnak megfelelő, aznap esetén a nyitvatartást is figyelembe veszi. Egyéb nap választása esetén múltbéli napokra jelez, hogy nem megfelelő.
+  - ✓ jegyek számának módosítása, negatívba nem mehet
+  - ✓ ár frissítése változásra
+  - ++ Hozzáadtam egy jobb alul lebegő dátum beviteli mezőt, hogy a jelen napot lehessen átállítani, tesztelendőn a nyitvatartás funkciót.
+
